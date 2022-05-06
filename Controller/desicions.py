@@ -3,7 +3,7 @@ class OptionTaker():
         pass
 
     def input_process(self,face_input,obstacule_input,sensors_input):
-        #TODO: Recive face parameters, obstacule parameters, sensor parameters AND homogenize its values to something to analize
+        #TODO: Reci ve face parameters, obstacule parameters, sensor parameters AND homogenize its values to something to analize
         self.input_dict = {
             "face":0,
             "obstacule":0,

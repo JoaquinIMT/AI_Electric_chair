@@ -1,9 +1,9 @@
+#source = https://www.tutorialspoint.com/python/python_multithreading.htm
 import threading
 import time
 
 exitFlag = 0
 
-#source = https://www.tutorialspoint.com/python/python_multithreading.htm
 ##STILL NOT FINISHED
 class myThread (threading.Thread):
    
