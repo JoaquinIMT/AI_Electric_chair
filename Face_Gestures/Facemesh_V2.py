@@ -1,7 +1,7 @@
 import pandas as pd
 import xgboost as xgb
 import mediapipe as mp
-import Facemesh
+from Facemesh import Facemesh
 
 
 mp_face_mesh = mp.solutions.face_mesh

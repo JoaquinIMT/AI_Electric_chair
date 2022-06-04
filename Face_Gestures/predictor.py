@@ -1,4 +1,4 @@
-import Facemesh_V2
+from Facemesh_V2 import Facemesh_V2
 import cv2
 
 cap = cv2.VideoCapture(0)
