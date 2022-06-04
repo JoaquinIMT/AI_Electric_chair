@@ -7,7 +7,8 @@ from Facemesh import Facemesh
 mp_face_mesh = mp.solutions.face_mesh
 
 class Facemesh_V2(Facemesh):
-    def __init__(self):
+    def __init__(self,store_values):
+        self.store_values = store_values
         super().__init__()
         self.make_kps_dict()
     
@@ -43,7 +44,10 @@ class Facemesh_V2(Facemesh):
         df_eyes, df_mouth = self.assemble_dfs(points)
         eye_prediction = self.predict_gesture(df_eyes,'eye_gesture_prediction')
         mouth_prediction = self.predict_gesture(df_mouth,'lips_gesture_prediction')
-        print("EYE PREDICTION",eye_prediction,"MOUTH PREDICTION",mouth_prediction)
+        self.store_values.put_next_sign(mouth_prediction, eye_prediction)
+        if self.store_values.count == 19:
+            self.store_values.evaluate_sign()
+        #print("EYE PREDICTION",eye_prediction,"MOUTH PREDICTION",mouth_prediction)
     
     def assemble_dfs(self,points):
         dfs = pd.DataFrame(points).transpose()
