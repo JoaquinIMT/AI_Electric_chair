@@ -16,7 +16,6 @@ class Facemesh:
         left_iris = [474, 475, 476, 477]
         right_iris = [469, 470, 471, 472]
         centers_iris = [468, 473]
-        
         self.eyes_gestures_kps = left_eye + left_eyebrow + right_eye + right_eyebrow
         self.kps = self.eyes_gestures_kps + lips
         self.eyes_kps = self.eyes_gestures_kps + left_iris + right_iris
@@ -32,7 +31,7 @@ class Facemesh:
         classifiers = {
             'eye_gesture_prediction': {
                 'class_names' : ['neutral','ojo_derecho','ojo_izquierdo'],
-                'file_name' : 'modelos/eye_gesture_model_3.json',
+                'file_name' : '/home/pi/Documents/AI_Electric_chair/Face_gestures/modelos/eye_gesture_model_8.json',
                 'columns': [2, 3, 10, 11, 18, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 35, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 94, 95, 96, 97, 98, 99, 106, 107, 108, 109, 110, 111, 112, 113, 116, 117, 118, 119, 120, 121, 122, 123, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 182, 183],
                 'df_name': 'eyes_gestures_ds.csv',
                 'kps' : self.eyes_gestures_kps
@@ -45,7 +44,7 @@ class Facemesh:
             },
             'lips_gesture_prediction': {
                 'class_names': ['boca_abierta', 'neutral', 'sonrisa'],
-                'file_name' : 'modelos/lips_gesture_model_1.json',
+                'file_name' : '/home/pi/Documents/AI_Electric_chair/Face_gestures/modelos/lips_gesture_model_4.json',
                 'columns': [0, 1, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 17, 26, 27, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 64, 65, 86, 87, 88, 89, 90, 91, 92, 93, 100, 101, 102, 103, 104, 105, 114, 115, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 152, 153, 174, 175, 176, 177, 178, 179, 180, 181],
                 'df_name': 'lips_ds.csv',
                 'kps' : self.mouth

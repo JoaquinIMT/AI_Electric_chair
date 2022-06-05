@@ -6,7 +6,7 @@ import threading
 from time import sleep
 
 face_values = StoreValues()
-face_mesh = Facemesh_V2(face_values)
+face_mesh = Facemesh_V2(face_values,classifier='lips_gesture_prediction')
 #actuator = Actuator()
 
 

@@ -7,9 +7,9 @@ from Face_Gestures.Facemesh import Facemesh
 mp_face_mesh = mp.solutions.face_mesh
 
 class Facemesh_V2(Facemesh):
-    def __init__(self,store_values):
+    def __init__(self,store_values,**features):
         self.store_values = store_values
-        super().__init__()
+        super().__init__(**features)
         self.make_kps_dict()
     
     def make_kps_dict(self):
@@ -42,8 +42,8 @@ class Facemesh_V2(Facemesh):
     def print_and_predict_gestures(self,image,facial_landmarks):
         points = self.get_points(image.shape,facial_landmarks)
         df_eyes, df_mouth = self.assemble_dfs(points)
-        eye_prediction = self.predict_gesture(df_eyes,'eye_gesture_prediction')
-        mouth_prediction = self.predict_gesture(df_mouth,'lips_gesture_prediction')
+        eye_prediction = self.predict_gestures(df_eyes,'eye_gesture_prediction')
+        mouth_prediction = self.predict_gestures(df_mouth,'lips_gesture_prediction')
         self.store_values.put_next_sign(mouth_prediction, eye_prediction)
         self.store_values.evaluate_sign()
         print(self.store_values.mout,self.store_values.eye)
@@ -67,7 +67,7 @@ class Facemesh_V2(Facemesh):
                 y = int(pt.y * height)
         return points
         
-    def predict_gesture(self,df,classifier_name):
+    def predict_gestures(self,df,classifier_name):
         formatted_df = xgb.DMatrix(df)
         prediction = int(self.whole_face[classifier_name]['xgb'].predict(formatted_df))
         return self.whole_face[classifier_name]['class_names'][prediction]
