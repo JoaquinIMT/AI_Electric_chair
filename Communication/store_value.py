@@ -1,11 +1,12 @@
 class StoreValues():
     def __init__(self):
-        self.feature_limit = 10
+        self.feature_limit = 8
         self.mouth_arr = ['neutral']*self.feature_limit
         self.eyes_arr = ['neutral']*self.feature_limit
         self.sensor = 0
         self.count = 0
         self.esperar_instruccion = True
+        self.finished = False
         self.evaluate_sign()
 
     def evaluate_sign(self):
@@ -18,4 +19,3 @@ class StoreValues():
         self.mouth_arr[self.count] = sign_m
         self.eyes_arr[self.count] = sign_e
         self.count = self.count + 1 if self.count < self.feature_limit-1 else 0
-        print(self.count)

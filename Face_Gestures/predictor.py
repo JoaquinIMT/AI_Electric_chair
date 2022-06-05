@@ -1,13 +1,9 @@
-<<<<<<< Updated upstream
-from Facemesh_V2 import Facemesh_V2
-=======
->>>>>>> Stashed changes
 import cv2
 
 #lips_gesture_prediction, kps_original, eye_gesture_prediction
 
-def do_classification(face_mesh, store_values, max_frames = 500):
-    cap = cv2.VideoCapture(0)
+def do_classification(face_mesh, max_frames = 500):
+    cap = cv2.VideoCapture(1)
     num_frames = 0
     while cap.isOpened():
         success, image = cap.read()
@@ -23,6 +19,8 @@ def do_classification(face_mesh, store_values, max_frames = 500):
         multi_face_lm = face_mesh.get_image_landmarks(image)
         if multi_face_lm.multi_face_landmarks:
             for face_landmarks in multi_face_lm.multi_face_landmarks:
-                face_mesh.print_and_predict_gestures(image,face_landmarks,store_values)
+                face_mesh.print_and_predict_gestures(image,face_landmarks)
     cv2.destroyAllWindows()
     cap.release()
+    face_mesh.store_values.finished = True
+    print("FINISHING PREDICTION")
