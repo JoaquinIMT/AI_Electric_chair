@@ -3,7 +3,7 @@ import cv2
 #lips_gesture_prediction, kps_original, eye_gesture_prediction
 
 def do_classification(face_mesh, max_frames = 500):
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     num_frames = 0
     while cap.isOpened():
         success, image = cap.read()
