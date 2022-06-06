@@ -48,3 +48,12 @@ while True:
 
     except KeyboardInterrupt:
         GPIO.cleanup() """
+
+
+
+# while True:
+#     try:
+#         GPIO.output(pito,True) #in1
+
+#     except:
+#         GPIO.cleanup()

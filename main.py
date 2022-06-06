@@ -17,6 +17,7 @@ def do_logic(face_values,actuator):
         if face_values.esperar_instruccion:
             if face_values.mout == 'sonrisa':
                 face_values.esperar_instruccion = False
+                actuator.buzz_one()
                 print("========================EMPIEZA PROGRAMAAAAA, ESPERANDO INSTRUCCION")
         else:
             if face_values.mout == 'boca_abierta' and not face_values.obstacule_detected:
@@ -34,6 +35,7 @@ def do_logic(face_values,actuator):
 
             if face_values.finish_process and face_values.eye == 'neutral' and face_values.mout == 'neutral':
                 actuator.motors_stop()
+                actuator.buzz_twice()
                 print("========================actuator.motor_STOP()")
                 face_values.finish_process = False
                 face_values.esperar_instruccion = True
@@ -48,6 +50,7 @@ def do_sensing(face_values,actuator,limit_distance=25):
         distance = ultrasonic.sense()
         if distance < limit_distance and not face_values.obstacule_detected:
             actuator.motors_stop()
+            actuator.buzz_tree()
             print("========================actuator.motors_STOP()")
             face_values.obstacule_detected = True
         elif face_values.obstacule_detected:

@@ -14,6 +14,8 @@ class Actuator():
          
         self.Motor2A = 23
         self.Motor2B = 22
+        self.seconds_buzz = 0.5
+        self.buzz = 21
         self.setup()
 
         
@@ -25,8 +27,36 @@ class Actuator():
         
         GPIO.setup(self.Motor2A,GPIO.OUT)
         GPIO.setup(self.Motor2B,GPIO.OUT)
- 
+
+        GPIO.setup(self.buzz,GPIO.OUT)
     
+    def buzz_one():
+        GPIO.output(self.buzz,True) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,False) #in1
+
+    def buzz_twice():
+        GPIO.output(self.buzz,True) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,False) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,True) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,False) #in1
+
+    def buzz_tree():
+        GPIO.output(self.buzz,True) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,False) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,True) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,False) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,True) #in1
+        sleep(self.seconds_buzz)
+        GPIO.output(self.buzz,False) #in1
+
     def motors_fw(self):
         #IZQUIERDA
         GPIO.output(self.Motor1A,True) #in1
