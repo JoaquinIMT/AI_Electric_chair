@@ -7,6 +7,8 @@ class StoreValues():
         self.count = 0
         self.esperar_instruccion = True
         self.finished = False
+        self.obstacule_detected = False
+        self.finish_process = False
         self.evaluate_sign()
 
     def evaluate_sign(self):

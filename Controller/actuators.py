@@ -74,7 +74,7 @@ class Actuator():
     def clean_gpio(self):
         GPIO.cleanup()
 
-motores = Actuator()
+""" motores = Actuator()
 motores.setup()
 
 while True:
@@ -83,3 +83,4 @@ while True:
         #motores.motors_bw()
     except:
         motores.clean_gpio()
+ """

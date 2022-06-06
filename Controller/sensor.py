@@ -9,6 +9,7 @@ class Sensor():
         GPIO.setmode(GPIO.BCM)
         self.pulse_start=0
         self.pulse_end=0
+        self.setup()
 
     def setup(self):
         GPIO.setup(self.trig,GPIO.OUT)
@@ -26,6 +27,7 @@ class Sensor():
 
         while GPIO.input(self.echo):
             self.pulse_end=time.time()
+        return self.calculate_distance()
     
     def calculate_distance(self):
         # distance=(0.034/2)*self.pulse_end
@@ -33,10 +35,10 @@ class Sensor():
         distance=self.pulse_duration*17150
         distance = round(distance,2)
 
-        print('Distancia',distance,'cm')
+        #print('Distancia',distance,'cm')
         return distance
 
-ultrasonic = Sensor()
+""" ultrasonic = Sensor()
 ultrasonic.setup()
 
 
@@ -47,4 +49,4 @@ while True:
         print('distancia aqui',distance)
 
     except KeyboardInterrupt:
-        GPIO.cleanup()
+        GPIO.cleanup() """

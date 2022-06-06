@@ -19,7 +19,7 @@ def do_classification(face_mesh, max_frames = 500):
         multi_face_lm = face_mesh.get_image_landmarks(image)
         if multi_face_lm.multi_face_landmarks:
             for face_landmarks in multi_face_lm.multi_face_landmarks:
-                face_mesh.draw_and_predict_gesture(image,face_landmarks)
+                face_mesh.print_and_predict_gestures(image,face_landmarks)
     cv2.destroyAllWindows()
     cap.release()
     face_mesh.store_values.finished = True
