@@ -14,6 +14,8 @@ class Actuator():
          
         self.Motor2A = 23
         self.Motor2B = 22
+        self.setup()
+
         
 
     def setup(self):

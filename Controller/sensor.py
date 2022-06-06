@@ -17,14 +17,12 @@ class Sensor():
 
     def sense(self):
         GPIO.output(self.trig,False)
-        time.sleep(2*(1/1000000))
+        time.sleep(0.000002)
         GPIO.output(self.trig,True)
-        time.sleep(10*(1/1000000))
+        time.sleep(0.00001)
         GPIO.output(self.trig,False)
-
         while GPIO.input(self.echo)==0:
             self.pulse_start=time.time()
-
         while GPIO.input(self.echo):
             self.pulse_end=time.time()
         return self.calculate_distance()
@@ -38,14 +36,14 @@ class Sensor():
         #print('Distancia',distance,'cm')
         return distance
 
-""" ultrasonic = Sensor()
-ultrasonic.setup()
+"""ultrasonic = Sensor()
+#ultrasonic.setup()
 
 
 while True: 
     try:
-        ultrasonic.sense()
-        distance =ultrasonic.calculate_distance()
+        distance = ultrasonic.sense()
+        #distance =ultrasonic.calculate_distance()
         print('distancia aqui',distance)
 
     except KeyboardInterrupt:

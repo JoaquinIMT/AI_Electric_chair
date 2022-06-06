@@ -34,6 +34,8 @@ def do_logic(face_values,actuator):
 
             if face_values.finish_process and face_values.eye == 'neutral' and face_values.mout == 'neutral':
                 actuator.motors_stop()
+                print("========================actuator.motor_STOP()")
+                face_values.finish_process = False
                 face_values.esperar_instruccion = True
 
         if face_values.finished:
@@ -44,9 +46,9 @@ def do_sensing(face_values,actuator,limit_distance=25):
     
     while True:
         distance = ultrasonic.sense()
-        
-        if distance < limit_distance:
+        if distance < limit_distance and not face_values.obstacule_detected:
             actuator.motors_stop()
+            print("========================actuator.motors_STOP()")
             face_values.obstacule_detected = True
         elif face_values.obstacule_detected:
             face_values.obstacule_detected = False
